@@ -1,9 +1,7 @@
 # TodoMVC Performance Comparison
 
-Both Mercury and Elm are based on the [virtual-dom][] project which appears to
-be extremely fast.
-
-[virtual-dom]: https://github.com/Matt-Esch/virtual-dom
+This is forked from benchmark tests that were used to show the speed of Mercury and Elm. But it turns out, the reactive capabilities of Alkali perform even better.
+https://github.com/evancz/todomvc-perf-comparison/
 
 [**Run it yourself**][runner] to see how it works on your machine or in other
 browsers!
@@ -13,4 +11,4 @@ a Macbook Air:
 
 [![Sample results for Chrome 35 + OSX 10.9.4 on a Macbook Air](sampleResults.png)][runner]
 
-[runner]: http://evancz.github.io/todomvc-perf-comparison/
+[runner]: http://kriszyp.github.io/todomvc-perf-comparison/
