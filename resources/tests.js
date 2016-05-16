@@ -264,7 +264,7 @@ Suites.push({
 Suites.push({
     name: 'Alkali',
     url: 'todomvc/alkali/index.html',
-    version: '1.1.2',
+    version: '0.4.2',
     prepare: function (runner, contentWindow, contentDocument) {
         return runner.waitForElement('#new-todo').then(function (element) {
             element.focus();
