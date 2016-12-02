@@ -205,15 +205,11 @@ Suites.push({
     tests: [
         new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (newTodo, contentWindow, contentDocument) {
             for (var i = 0; i < numberOfItemsToAdd; i++) {
-                var changeEvent = document.createEvent('Event');
-                changeEvent.initEvent('input', true, true);
+                var keydownEvent = document.createEvent('Event');
+                keydownEvent.initEvent('keydown', true, true);
+                keydownEvent.which = 13; // VK_ENTER
                 newTodo.value = 'Something to do ' + i;
-                newTodo.dispatchEvent(changeEvent);
-
-                var keypressEvent = document.createEvent('Event');
-                keypressEvent.initEvent('keydown', true, true);
-                keypressEvent.keyCode = 13;
-                newTodo.dispatchEvent(keypressEvent);
+                newTodo.dispatchEvent(keydownEvent);
             }
         }),
         new BenchmarkTestStep('CompletingAllItems', function (newTodo, contentWindow, contentDocument) {
