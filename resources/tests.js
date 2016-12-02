@@ -38,7 +38,7 @@ Suites.push({
 
 Suites.push({
     name: 'dojo2',
-    url: 'todomvc/dojo2/dist/index.html',
+    url: 'todomvc/dojo2/index.html',
     version: '0.0.1',
     prepare: function (runner, contentWindow, contentDocument) {
         return runner.waitForElement('.new-todo').then(function (element) {
