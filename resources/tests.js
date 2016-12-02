@@ -37,6 +37,43 @@ Suites.push({
 });
 
 Suites.push({
+    name: 'dojo',
+    url: 'todomvc/tastejs/examples/dojo/index.html',
+    version: '0.0.1',
+    prepare: function (runner, contentWindow, contentDocument) {
+        return runner.waitForElement('#new-todo').then(function (element) {
+            element.focus();
+            return element;
+        });
+    },
+    tests: [
+        new BenchmarkTestStep('Adding' + numberOfItemsToAdd + 'Items', function (newTodo, contentWindow, contentDocument) {
+            var todoForm = contentDocument.getElementById('todo-form');
+            for (var i = 0; i < numberOfItemsToAdd; i++) {
+                var changeEvent = document.createEvent('Event');
+                changeEvent.initEvent('change', true, true);
+                newTodo.value = 'Something to do ' + i;
+                newTodo.dispatchEvent(changeEvent);
+
+                var submitEvent = document.createEvent('Event');
+                submitEvent.initEvent('submit', true, true);
+                todoForm.dispatchEvent(submitEvent);
+            }
+        }),
+        new BenchmarkTestStep('CompletingAllItems', function (newTodo, contentWindow, contentDocument) {
+            var checkboxes = contentDocument.querySelectorAll('.toggle');
+            for (var i = 0; i < checkboxes.length; i++)
+                checkboxes[i].click();
+        }),
+        new BenchmarkTestStep('DeletingAllItems', function (newTodo, contentWindow, contentDocument) {
+            var deleteButtons = contentDocument.querySelectorAll('.destroy');
+            for (var i = 0; i < deleteButtons.length; i++)
+                deleteButtons[i].click();
+        })
+    ]
+});
+
+Suites.push({
     name: 'dojo2',
     url: 'todomvc/dojo2/index.html',
     version: '0.0.1',
