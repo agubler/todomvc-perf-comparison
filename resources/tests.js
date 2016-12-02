@@ -157,7 +157,7 @@ Suites.push({
 
 Suites.push({
     name: 'React Typescript',
-    url: 'todomvc/examples/typescript-react/index.html',
+    url: 'todomvc/tastejs/examples/typescript-react/index.html',
     version: '?.?.?',
     prepare: function (runner, contentWindow, contentDocument) {
         return runner.waitForElement('.new-todo').then(function (element) {
